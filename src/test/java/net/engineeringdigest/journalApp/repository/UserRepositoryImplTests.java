@@ -1,5 +1,6 @@
 package net.engineeringdigest.journalApp.repository;
 
+import org.bson.assertions.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,6 +13,6 @@ public class UserRepositoryImplTests {
 
     @Test
     public void testFindUser() {
-        userRepository.getUserForSA();
+        Assertions.assertNotNull(userRepository.getUserForSA());
     }
 }

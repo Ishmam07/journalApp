@@ -18,11 +18,10 @@ public class UserRepositoryImpl {
     public List<User> getUserForSA() {
         Query query = new Query();
 
-        query.addCriteria(Criteria.where("email").exists(true));
-        query.addCriteria(Criteria.where("email").ne("").ne(null));
+
+        query.addCriteria(Criteria.where("email").ne("").regex("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"));
         query.addCriteria(Criteria.where("sentimentAnalysis").is(true));
 
-        List<User> users = mongoTemplate.find(query, User.class);
-        return users;
+        return mongoTemplate.find(query, User.class);
     }
 }
